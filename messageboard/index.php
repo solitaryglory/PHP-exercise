@@ -3,6 +3,13 @@ session_start();
 error_reporting(0);
 header("Content-type:text/html;charset=utf-8"); 
 include "conn.php";
+if(!isset($_COOKIE["visittime"])){
+	setcookie("visittime",date("y-m-d H:i:s"));
+}else{
+	setcookie("visittime",date("y-m-d H:i:s"),time()+60);
+	echo "您上次访问本网站的时间为:".$_COOKIE['visittime'];
+	echo "</br>";
+}
 $user='lihuaiqiu';
 $passwd='lihuaiqiujiawo';
 $_SESSION['user']=$_POST['user'];
